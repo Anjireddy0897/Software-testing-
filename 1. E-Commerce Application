@@ -1,0 +1,83 @@
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class SmokeTesting {
+
+    // Method to test website availability
+    public static void checkPage(String pageUrl) {
+
+        try {
+
+            // Create URL object
+            URL url = new URL(pageUrl);
+
+            // Open connection
+            HttpURLConnection connection =
+                    (HttpURLConnection) url.openConnection();
+
+            // Set request method
+            connection.setRequestMethod("GET");
+
+            // Set timeout
+            connection.setConnectTimeout(5000);
+
+            // Get response code
+            int responseCode = connection.getResponseCode();
+
+            // Display result
+            System.out.println("--------------------------------");
+
+            System.out.println("Testing URL: " + pageUrl);
+
+            System.out.println("Response Code: " + responseCode);
+
+            if (responseCode == 200) {
+
+                System.out.println("STATUS : PASS");
+                System.out.println("Page is working correctly");
+
+            } else {
+
+                System.out.println("STATUS : FAIL");
+                System.out.println("Page is not accessible");
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("--------------------------------");
+
+            System.out.println("Testing URL: " + pageUrl);
+
+            System.out.println("STATUS : FAIL");
+
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    // Main Method
+    public static void main(String[] args) {
+
+        System.out.println("===== SMOKE TESTING STARTED =====");
+
+        // Critical pages to test
+        String homePage =
+                "https://www.google.com";
+
+        String loginPage =
+                "https://www.google.com";
+
+        String dashboardPage =
+                "https://www.google.com";
+
+        // Perform smoke testing
+        checkPage(homePage);
+
+        checkPage(loginPage);
+
+        checkPage(dashboardPage);
+
+        System.out.println("--------------------------------");
+
+        System.out.println("===== SMOKE TESTING COMPLETED =====");
+    }
+}
