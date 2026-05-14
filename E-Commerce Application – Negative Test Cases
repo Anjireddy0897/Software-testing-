@@ -1,0 +1,34 @@
+public class EcommerceNegativeTest {
+
+    public static void main(String[] args) {
+
+        String username = "";
+        String password = "12345";
+
+        // Negative Login Test
+        if (username.isEmpty() || password.isEmpty()) {
+            System.out.println("Error: Username or Password cannot be empty");
+        }
+
+        // Invalid Password Test
+        password = "wrongpass";
+
+        if (!password.equals("admin123")) {
+            System.out.println("Invalid Password");
+        }
+
+        // Invalid Coupon Test
+        String coupon = "ABC999";
+
+        if (!coupon.equals("SAVE10")) {
+            System.out.println("Coupon Code Invalid");
+        }
+
+        // Empty Cart Test
+        int cartItems = 0;
+
+        if (cartItems == 0) {
+            System.out.println("Cart is Empty");
+        }
+    }
+}
